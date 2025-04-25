@@ -1,0 +1,6 @@
+@Theeca.EOD.API_HostAddress = http://localhost:5230
+
+GET {{Theeca.EOD.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
