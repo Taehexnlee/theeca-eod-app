@@ -1,0 +1,60 @@
+<!-- src/app/pages/report-new/report-new.component.html 수정본 -->
+
+<div class="report-container">
+  <h1 class="heading">Theeca EOD Report</h1>
+  <h2 class="subheading">THEECA EOD REPORT</h2>
+
+  <div class="shift-toggle">
+    <button [class.active]="form.shift === 'Brunch'" (click)="form.shift = 'Brunch'">Brunch</button>
+    <button [class.active]="form.shift === 'Dinner'" (click)="form.shift = 'Dinner'">Dinner</button>
+  </div>
+
+  <form #reportForm="ngForm" (ngSubmit)="submit()">
+    <section class="till-balances">
+      <h3>TILL BALANCES</h3>
+      <div class="till-table">
+        <div class="till-header">
+          <span>Denomination</span>
+          <span>Count</span>
+        </div>
+        <div class="till-row" *ngFor="let d of denominations">
+          <label>{{ d.label }}</label>
+          <input type="number" min="0" [(ngModel)]="d.count" name="denom-{{d.label}}" (ngModelChange)="calculateTotals()" />
+        </div>
+      </div>
+
+      <p class="totals"><strong>TOTAL CASH COUNTED:</strong> ${{ totalCash.toFixed(2) }}</p>
+      <p class="totals"><strong>TOTAL TO BANK:</strong> ${{ totalToBank.toFixed(2) }}</p>
+      <p class="totals" [ngClass]="{ 'error': variance !== 0 }">
+        <strong>VARIANCE:</strong> ${{ variance.toFixed(2) }}
+        <span *ngIf="variance === 0">- Great!</span>
+      </p>
+    </section>
+
+    <div class="input-group"><label for="cashSales">CASH SALES ($)*</label><input id="cashSales" type="number" name="cashSales" [(ngModel)]="form.cashSales" required (ngModelChange)="calculateVariance()" /></div>
+    <div class="input-group"><label for="grossSales">GROSS SALES ($)*</label><input id="grossSales" type="number" name="grossSales" [(ngModel)]="form.grossSales" required /></div>
+    <div class="input-group"><label for="netSales">NET SALES ($)*</label><input id="netSales" type="number" name="netSales" [(ngModel)]="form.netSales" required /></div>
+    <div class="input-group"><label for="tips">TIPS ($)</label><input id="tips" type="number" name="tips" [(ngModel)]="form.tips" /></div>
+    <div class="input-group"><label for="refund">REFUND ($)</label><input id="refund" type="number" name="refund" [(ngModel)]="form.refund" /></div>
+    <div class="input-group"><label for="refundComment">REFUND COMMENT</label><textarea id="refundComment" [(ngModel)]="form.refundComment" name="refundComment"></textarea></div>
+
+    <div class="input-group">
+      <label>DAILY RATING</label>
+      <div class="stars">
+        <span *ngFor="let star of [1,2,3,4,5]" (click)="form.rating = star">
+          {{ star <= form.rating ? '★' : '☆' }}
+        </span>
+      </div>
+    </div>
+
+    <div class="input-group"><label for="name">Name*</label><input id="name" type="text" name="name" [(ngModel)]="form.name" required /></div>
+
+    <div class="datetime">
+      <div class="date-time-label">Date</div>
+      <div class="date-box">{{ todayDate }}</div>
+      <div class="time-box">{{ nowTime }}</div>
+    </div>
+
+    <button class="submit-btn" type="submit" [disabled]="!reportForm.form.valid" [ngClass]="{ 'ready': reportForm.form.valid }">Submit</button>
+  </form>
+</div>

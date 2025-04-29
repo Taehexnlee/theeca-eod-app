@@ -1,0 +1,46 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .main-title {
+    align-self: flex-start;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  .sub-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+  }
+  
+  .action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  
+  .new-report,
+  .saved-reports {
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .new-report:hover,
+  .saved-reports:hover {
+    color: #1d4ed8;
+  }

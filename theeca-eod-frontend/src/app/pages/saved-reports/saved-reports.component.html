@@ -1,0 +1,26 @@
+<div *ngFor="let report of reports" class="report-card">
+  <div class="report-header">
+    <span class="shift">🕒 ({{ report.shift }})</span>
+    <span class="name">👤 {{ report.name }}</span>
+  </div>
+
+  <p class="datetime">📅 {{ report.date }} at 🕘 {{ report.time }}</p>
+
+  <div class="report-detail">
+    <p>💰 <strong>Net Sales:</strong> ${{ report.netSales }}</p>
+    <p>💵 <strong>Gross Sales:</strong> ${{ report.grossSales }}</p>
+    <p>🪙 <strong>Cash Sales:</strong> ${{ report.cashSales }}</p>
+    <p>🏦 <strong>To Bank:</strong> ${{ report.totalToBank }}</p>
+    <p>💸 <strong>Tips:</strong> ${{ report.tips }}</p>
+    <p>↩️ <strong>Refund:</strong> ${{ report.refund }}</p>
+    <p *ngIf="report.refundComment">📝 <strong>Reason:</strong> {{ report.refundComment }}</p>
+    <p [ngClass]="{ 'variance-zero': report.variance === 0, 'variance-error': report.variance !== 0 }">
+      📊 <strong>Variance:</strong> ${{ report.variance }}
+    </p>
+  </div>
+
+  <!-- ✅ 삭제 버튼 추가 (id 있을 때만) -->
+  <div class="delete-btn-wrap">
+    <button *ngIf="report.id !== undefined" (click)="deleteReport(report.id!)" class="delete-btn">🗑️ Delete</button>
+  </div>
+</div>

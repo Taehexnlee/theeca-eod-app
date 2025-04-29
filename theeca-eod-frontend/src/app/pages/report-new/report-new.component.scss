@@ -1,0 +1,134 @@
+.report-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .heading {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  .subheading {
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .shift-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  
+    button {
+      flex: 1;
+      padding: 0.5rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      background: #f9f9f9;
+  
+      &.active {
+        background: black;
+        color: white;
+        font-weight: 600;
+      }
+    }
+  }
+  
+  .till-balances {
+    margin-bottom: 2rem;
+  
+    .till-header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      padding-bottom: 0.5rem;
+    }
+  
+    .till-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+  
+      label {
+        flex: 1;
+      }
+  
+      input {
+        width: 60px;
+        text-align: right;
+      }
+    }
+  
+    .totals {
+      margin: 0.5rem 0;
+    }
+  
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  
+    input, textarea {
+      padding: 0.4rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+  
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+  }
+  
+  .stars {
+    font-size: 1.4rem;
+    cursor: pointer;
+  
+    span {
+      margin-right: 5px;
+      color: gold;
+    }
+  }
+  
+  .datetime {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  
+    .date-box, .time-box {
+      padding: 0.5rem 1rem;
+      background: #f1f1f1;
+      border-radius: 8px;
+    }
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background: #ccc;
+    border: none;
+    font-weight: bold;
+  
+    &.ready {
+      background: #22c55e;
+      color: white;
+    }
+  
+    &:disabled {
+      background: #ddd;
+      color: #999;
+    }
+  }
