@@ -1,4 +1,22 @@
-<div *ngFor="let report of reports" class="report-card">
+<!-- ✅ 날짜 범위 선택 UI -->
+<div class="date-filter">
+  <label>
+    From:
+    <input type="date" [(ngModel)]="startDate" />
+  </label>
+  <label>
+    To:
+    <input type="date" [(ngModel)]="endDate" />
+  </label>
+</div>
+
+  <div class="summary">
+    🏦 Total To Bank: ${{ getTotalToBank() }}
+  </div>
+
+
+<!-- ✅ 필터링된 report 리스트 표시 -->
+<div *ngFor="let report of getFilteredReports()" class="report-card">
   <div class="report-header">
     <span class="shift">🕒 ({{ report.shift }})</span>
     <span class="name">👤 {{ report.name }}</span>
@@ -14,12 +32,17 @@
     <p>💸 <strong>Tips:</strong> ${{ report.tips }}</p>
     <p>↩️ <strong>Refund:</strong> ${{ report.refund }}</p>
     <p *ngIf="report.refundComment">📝 <strong>Reason:</strong> {{ report.refundComment }}</p>
-    <p [ngClass]="{ 'variance-zero': report.variance === 0, 'variance-error': report.variance !== 0 }">
-      📊 <strong>Variance:</strong> ${{ report.variance }}
+    <p
+      [ngClass]="{
+        'variance-zero': report.variance === 0,
+        'variance-good': report.variance < 0,
+        'variance-error': report.variance > 0
+      }"
+    >
+      📊 <strong>Variance:</strong> ${{ getAbs(report.variance) }}
     </p>
   </div>
 
-  <!-- ✅ 삭제 버튼 추가 (id 있을 때만) -->
   <div class="delete-btn-wrap">
     <button *ngIf="report.id !== undefined" (click)="deleteReport(report.id!)" class="delete-btn">🗑️ Delete</button>
   </div>

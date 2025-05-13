@@ -1,5 +1,3 @@
-<!-- src/app/pages/report-new/report-new.component.html 수정본 -->
-
 <div class="report-container">
   <h1 class="heading">Theeca EOD Report</h1>
   <h2 class="subheading">THEECA EOD REPORT</h2>
@@ -31,11 +29,11 @@
       </p>
     </section>
 
-    <div class="input-group"><label for="cashSales">CASH SALES ($)*</label><input id="cashSales" type="number" name="cashSales" [(ngModel)]="form.cashSales" required (ngModelChange)="calculateVariance()" /></div>
-    <div class="input-group"><label for="grossSales">GROSS SALES ($)*</label><input id="grossSales" type="number" name="grossSales" [(ngModel)]="form.grossSales" required /></div>
-    <div class="input-group"><label for="netSales">NET SALES ($)*</label><input id="netSales" type="number" name="netSales" [(ngModel)]="form.netSales" required /></div>
-    <div class="input-group"><label for="tips">TIPS ($)</label><input id="tips" type="number" name="tips" [(ngModel)]="form.tips" /></div>
-    <div class="input-group"><label for="refund">REFUND ($)</label><input id="refund" type="number" name="refund" [(ngModel)]="form.refund" /></div>
+    <div class="input-group"><label for="cashSales">CASH SALES ($)*</label><input id="cashSales" type="number" name="cashSales" [(ngModel)]="form.cashSales" required (ngModelChange)="calculateVariance()" placeholder="0" /></div>
+    <div class="input-group"><label for="grossSales">GROSS SALES ($)*</label><input id="grossSales" type="number" name="grossSales" [(ngModel)]="form.grossSales" required placeholder="0" /></div>
+    <div class="input-group"><label for="netSales">NET SALES ($)*</label><input id="netSales" type="number" name="netSales" [(ngModel)]="form.netSales" required placeholder="0" /></div>
+    <div class="input-group"><label for="tips">TIPS ($)</label><input id="tips" type="number" name="tips" [(ngModel)]="form.tips" placeholder="0" /></div>
+    <div class="input-group"><label for="refund">REFUND ($)</label><input id="refund" type="number" name="refund" [(ngModel)]="form.refund" placeholder="0" /></div>
     <div class="input-group"><label for="refundComment">REFUND COMMENT</label><textarea id="refundComment" [(ngModel)]="form.refundComment" name="refundComment"></textarea></div>
 
     <div class="input-group">
